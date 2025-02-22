@@ -75,3 +75,113 @@ body {
 .step-name {
     font-weight: bold;
 }
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+h2 {
+    color: var(--primary-marine-blue);
+    margin-bottom: 10px;
+}
+
+p {
+    color: var(--neutral-cool-gray);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    color: var(--primary-marine-blue);
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    border: 1px solid var(--neutral-light-gray);
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus {
+    border-color: var(--primary-purplish-blue);
+    outline: none;
+}
+
+.error-message {
+    color: var(--primary-strawberry-red);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.plan-options {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.plan {
+    border: 1px solid var(--neutral-light-gray);
+    border-radius: 8px;
+    cursor: pointer;
+    flex: 1;
+    padding: 20px;
+    transition: border-color 0.3s;
+}
+
+.plan:hover {
+    border-color: var(--primary-purplish-blue);
+}
+
+.plan input[type="radio"] {
+    display: none;
+}
+
+.plan input[type="radio"]:checked + .plan-content {
+    border-color: var(--primary-purplish-blue);
+    background-color: var(--neutral-magnolia);
+}
+
+.plan-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-content img {
+    margin-bottom: 40px;
+    width: 40px;
+}
+
+.plan-info h3 {
+    color: var(--primary-marine-blue);
+    margin-bottom: 5px;
+}
+
+.plan-info .price {
+    color: var(--neutral-cool-gray);
+}
+
+.yearly-offer {
+    color: var(--primary-marine-blue);
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
