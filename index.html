@@ -9,32 +9,42 @@
   <body>
     <div class="container">
       <div class="sidebar">
-        <div class="step-indicator" data-step="1">
-          <div class="step-number">1</div>
-          <div class="step-info">
-            <div class="step-title">STEP 1</div>
-            <div class="step-name">YOUR INFO</div>
+        <div class="step-indicators">
+          <div class="step-indicator" data-step="1">
+            <div class="step-circle">
+              <div class="step-number">1</div>
+            </div>
+            <div class="step-info">
+              <div class="step-title">STEP 1</div>
+              <div class="step-name">YOUR INFO</div>
+            </div>
           </div>
-        </div>
-        <div class="step-indicator" data-step="2">
-          <div class="step-number">2</div>
-          <div class="step-info">
-            <div class="step-title">STEP 2</div>
-            <div class="step-name">SELECT PLAN</div>
+          <div class="step-indicator" data-step="2">
+            <div class="step-circle">
+              <div class="step-number">2</div>
+            </div>
+            <div class="step-info">
+              <div class="step-title">STEP 2</div>
+              <div class="step-name">SELECT PLAN</div>
+            </div>
           </div>
-        </div>
-        <div class="step-indicator" data-step="3">
-          <div class="step-number">3</div>
-          <div class="step-info">
-            <div class="step-title">STEP 3</div>
-            <div class="step-name">ADD-ONS</div>
+          <div class="step-indicator" data-step="3">
+            <div class="step-circle">
+              <div class="step-number">3</div>
+            </div>
+            <div class="step-info">
+              <div class="step-title">STEP 3</div>
+              <div class="step-name">ADD-ONS</div>
+            </div>
           </div>
-        </div>
-        <div class="step-indicator" data-step="4">
-          <div class="step-number">4</div>
-          <div class="step-info">
-            <div class="step-title">STEP 4</div>
-            <div class="step-name">SUMMARY</div>
+          <div class="step-indicator" data-step="4">
+            <div class="step-circle">
+              <div class="step-number">4</div>
+            </div>
+            <div class="step-info">
+              <div class="step-title">STEP 4</div>
+              <div class="step-name">SUMMARY</div>
+            </div>
           </div>
         </div>
       </div>
@@ -49,7 +59,7 @@
                 type="text"
                 id="name"
                 name="name"
-                placeholder="e.g. Stephen King"
+                placeholder="e.g. Certified Good Boy"
                 required
               />
               <span class="error-message" id="name-error"></span>
@@ -60,7 +70,7 @@
                 type="email"
                 id="email"
                 name="email"
-                placeholder="e.g. stephenking@lorem.com"
+                placeholder="e.g. certifiedgoodboy@gmail.com"
                 required
               />
               <span class="error-message" id="email-error"></span>
@@ -71,7 +81,7 @@
                 type="tel"
                 id="phone"
                 name="phone"
-                placeholder="e.g. +1 234 567 890"
+                placeholder="e.g. +234 856 789 0230"
                 required
               />
               <span class="error-message" id="phone-error"></span>
@@ -95,7 +105,10 @@
               <label class="plan">
                 <input type="radio" name="plan" value="advanced" />
                 <div class="plan-content">
-                  <img src="career-ladder-stairs-promotion-career-advance-svgrepo-com.svg" alt="Advanced" />
+                  <img
+                    src="career-ladder-stairs-promotion-career-advance-svgrepo-com.svg"
+                    alt="Advanced"
+                  />
                   <div class="plan-info">
                     <h3>Advanced</h3>
                     <p class="price">$12/mo</p>
@@ -106,7 +119,10 @@
               <label class="plan">
                 <input type="radio" name="plan" value="pro" />
                 <div class="plan-content">
-                  <img src="icon-pro.svg" alt="Pro" />
+                  <img
+                    src="game-controller-outline-svgrepo-com.svg"
+                    alt="Pro"
+                  />
                   <div class="plan-info">
                     <h3>Pro</h3>
                     <p class="price">$15/mo</p>
@@ -175,9 +191,7 @@
                 </div>
                 <p class="summary-plan-price">$9/mo</p>
               </div>
-              <div class="summary-addons">
-                <!-- Add-ons will be dynamically added here -->
-              </div>
+              <div class="summary-addons"></div>
               <div class="summary-total">
                 <p>Total (per month/year)</p>
                 <p class="total-price">$12/mo</p>
@@ -194,7 +208,7 @@
             <p>
               Thanks for confirming your subscription! We hope you have fun
               using our platform. If you ever need support, please feel free to
-              email us at support@loremgaming.com.
+              email us at certifiedgoodboy@gaming.com.
             </p>
           </div>
           <div class="form-buttons">
@@ -203,6 +217,9 @@
             </button>
             <button type="button" id="next-step" class="btn btn-primary">
               Next Step
+            </button>
+            <button type="submit" id="submit-form" class="btn btn-primary">
+              Submit
             </button>
           </div>
         </form>
