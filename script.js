@@ -74,4 +74,134 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   }
 
-  
+  nextBtn.addEventListener("click", function () {
+    if (validateStep(currentStep)) {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+  });
+
+  prevBtn.addEventListener("click", function () {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  });
+
+  const billingToggle = document.getElementById("billing-toggle");
+  const planPrices = document.querySelectorAll(".plan .price");
+  const yearlyOffers = document.querySelectorAll(".yearly-offer");
+  const addonPrices = document.querySelectorAll(".addon-price");
+
+  billingToggle.addEventListener("change", function () {
+    const isYearly = this.checked;
+    planPrices.forEach((price) => {
+      const monthlyPrice = parseInt(price.textContent.slice(1));
+      price.textContent = isYearly
+        ? `$${monthlyPrice * 10}/yr`
+        : `$${monthlyPrice}/mo`;
+    });
+    yearlyOffers.forEach((offer) => {
+      offer.style.display = isYearly ? "block" : "none";
+    });
+    addonPrices.forEach((price) => {
+      const monthlyPrice = parseInt(price.textContent.slice(2));
+      price.textContent = isYearly
+        ? `+$${monthlyPrice * 10}/yr`
+        : `+$${monthlyPrice}/mo`;
+    });
+    updateSummary();
+  });
+
+  const planInputs = document.querySelectorAll('input[name="plan"]');
+  const addonInputs = document.querySelectorAll('input[name="addons"]');
+
+  planInputs.forEach((input) => {
+    input.addEventListener("change", updateSummary);
+  });
+
+  addonInputs.forEach((input) => {
+    input.addEventListener("change", updateSummary);
+  });
+
+  function updateSummary() {
+    const selectedPlan = document.querySelector('input[name="plan"]:checked');
+    const selectedAddons = document.querySelectorAll(
+      'input[name="addons"]:checked'
+    );
+    const isYearly = billingToggle.checked;
+
+    const summaryPlan = document.getElementById("selected-plan");
+    const summaryPlanPrice = document.querySelector(".summary-plan-price");
+    const summaryAddons = document.querySelector(".summary-addons");
+    const totalPrice = document.querySelector(".total-price");
+
+    if (selectedPlan) {
+      const planName =
+        selectedPlan.value.charAt(0).toUpperCase() +
+        selectedPlan.value.slice(1);
+      const planPrice = parseInt(
+        selectedPlan
+          .closest(".plan")
+          .querySelector(".price")
+          .textContent.slice(1)
+      );
+      summaryPlan.textContent = `${planName} (${
+        isYearly ? "Yearly" : "Monthly"
+      })`;
+      summaryPlanPrice.textContent = isYearly
+        ? `$${planPrice * 10}/yr`
+        : `$${planPrice}/mo`;
+    }
+
+    summaryAddons.innerHTML = "";
+    let total = parseInt(summaryPlanPrice.textContent.slice(1));
+
+    selectedAddons.forEach((addon) => {
+      const addonName = addon.closest(".addon").querySelector("h3").textContent;
+      const addonPrice = parseInt(
+        addon
+          .closest(".addon")
+          .querySelector(".addon-price")
+          .textContent.slice(2)
+      );
+      const yearlyAddonPrice = isYearly ? addonPrice * 10 : addonPrice;
+
+      summaryAddons.innerHTML += `
+                <div class="summary-addon">
+                    <p>${addonName}</p>
+                    <p class="addon-price">+$${yearlyAddonPrice}/${
+        isYearly ? "yr" : "mo"
+      }</p>
+                </div>
+            `;
+
+      total += yearlyAddonPrice;
+    });
+
+    totalPrice.textContent = `$${total}/${isYearly ? "yr" : "mo"}`;
+  }
+
+  const changePlanLink = document.getElementById("change-plan");
+  changePlanLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    currentStep = 1;
+    showStep(currentStep);
+  });
+
+  submitBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (validateStep(currentStep)) {
+      // Here you would typically send the form data to a server
+      // For this example, we'll just show the confirmation step
+      currentStep++;
+      showStep(currentStep);
+    }
+  });
+
+  showStep(currentStep);
+});
+
+
