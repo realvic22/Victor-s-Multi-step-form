@@ -194,8 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
   submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
     if (validateStep(currentStep)) {
-      // Here you would typically send the form data to a server
-      // For this example, we'll just show the confirmation step
       currentStep++;
       showStep(currentStep);
     }
@@ -203,5 +201,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   showStep(currentStep);
 });
-
-
